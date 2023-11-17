@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>search table</title>
+</head>
+<body>
+
+<h2>Search Results</h2>
+
+<form method="post" action="{% if product.barcode %}{% url 'search_and_add_to_cart' barcode=product.barcode %}{% endif %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">Search</button>
+</form>
+
+{% if products %}
+  <div class="card border-success mb-3" style="max-width: 18rem;">
+      <div class="card-header">Search details</div>
+                <div class="card-body text-secondary">
+                  <table class="table table-striped" id="searchResultsTable">
+                    <thead>
+                      <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Barcode</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Date Added</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for product in products %}
+                         <tr>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.barcode }}</td>
+                            <td>{{ product.quantity_available }}</td>
+                            <td>{{ product.date_added }}</td>
+                            <td>
+                              <form method="post" action="{% url 'search_and_add_to_cart' product.barcode %}">
+                                      {% csrf_token %}
+                                    <input type="number" name="quantity" min="1" required>
+                                    <button type="submit">Add to Cart</button>
+                                </form>
+
+                            </td>
+                         </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+  </div>
+
+{% else %}
+    <p>No products found.</p>
+{% endif %}
+
+</body>
+</html>
