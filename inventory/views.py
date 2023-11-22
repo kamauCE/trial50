@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ProductForm
 from .forms import BarcodeSearchForm
+from .forms import CustomSignUpForm
 from .models import Product, Cart, CartItem
 from django.urls import reverse
 from django.template.loader import render_to_string
@@ -36,10 +37,6 @@ def add_product(request):
 
   return render(request, 'add_product.html', {'form': form})
 
-
-# def all_products(request):
-#   products = Product.objects.all()
-#   return render(request, 'all_products.html', {'products': products})
 
 def all_products(request):
   products = Product.objects.all()
@@ -152,33 +149,46 @@ def cart_view(request):
   return render(request, 'cart_view.html', {'cart_items': cart_items})
 
 
-def handlesignup(request):
-  if request.method == 'POST':
-    username = request.POST.get("username")
-    password = request.POST.get("password")
+# def handlesignup(request):
+#   if request.method == 'POST':
+#     username = request.POST.get("username")
+#     password = request.POST.get("password")
+#
+#     myuser = User.objects.create_user(username, password)
+#     myuser.save()
+#   return render(request, 'signup.html')
 
-    myuser = User.objects.create_user(username, password)
-    myuser.save()
-  return render(request, 'signup.html')
+def signup(request):
+    if request.method == 'POST':
+      form = CustomSignUpForm(request.POST)
+      if form.is_valid():
+        user = form.save()
+        login(request, user)
+        return redirect('handlelogin')  # Redirect to your desired page after successful signup
+    else:
+      form = CustomSignUpForm()
+
+    return render(request, 'signup.html', {'form': form})
 
 
 def handlelogin(request):
-  if request.method == 'POST':
-    username = request.POST.get("username")
-    password = request.POST.get("password")
-    myuser = authenticate(username=username, password=password)
+    if request.method == 'POST':
+      username = request.POST.get("username")
+      password = request.POST.get("password")
+      myuser = authenticate(username=username, password=password)
 
-    if myuser is not None:
-      login(request, myuser)
-      return redirect('all_products')
-    else:
-      return redirect('/login')
+      if myuser is not None:
+        login(request, myuser)
+        return redirect('all_products')
+      else:
+        messages.error(request, 'Incorrect login credentials')
+
     return render(request, 'login.html')
 
 
 def handlelogout(request):
   logout(request)
-  return redirect('/signup')
+  return redirect('handlelogin')
 
 
 @login_required
@@ -217,3 +227,7 @@ def add_to_cart(request, barcode):
       form = ProductForm(instance=product)
 
     return render(request, 'add_to_cart.html', {'form': form, 'product': product})
+
+
+def home(request):
+  return render(request,'home.html')
