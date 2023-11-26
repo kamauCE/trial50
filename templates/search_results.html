@@ -71,5 +71,41 @@
     <p>No products found.</p>
 {% endif %}
 
+
+<footer class="bg-dark">
+  <div class="container">
+    <div class="row mt-2">
+      <div class="col mt-2">
+        <h4 style="color: darksalmon">EXTENSIONS</h4>
+        <a href="{% url 'help' %}" style="text-decoration: none;color: wheat">Profile help</a><br>
+        <a href="{% url 'privacy' %}" style="text-decoration: none;color: wheat">Privacy Info</a>
+      </div>
+      <div class="col mt-2">
+        <a href="{% url 'all_products' %}" style="text-decoration: none"><span style="font-size: 35px;color: darksalmon;font-weight: bolder">VENTORY</span></a>
+        <p style="color: wheat">We are located in Mombasa, Sabasaba, opposite Ola petrol station</p><br>
+        <h5 style="color: wheat">Contact us:</h5>
+        <p style="color: wheat">O792508071</p>
+        <p style="color: wheat">chegee066@gmail.com</p>
+
+      </div>
+      <div class="col mt-2">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15919.511820072721!2d39.662393!3d-4.045316!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x184012b86f585ba3%3A0x344d247c34b352cb!2sSabasaba!5e0!3m2!1sen!2ske!4v1701029602980!5m2!1sen!2ske" width="500" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="col mt-2">
+        <h5 style="color: wheat">Follow us on our Social media platforms</h5>
+        <div class="row">
+          <P><a href='https://instagram.com/viperadiexcellent?igshid=YTQwZjQ0NmI0OA=='><i class="bi bi-instagram fs-4"></i></a></P>
+          <p><a href="https://www.facebook.com/profile.php?id=61552515685298&mibextid=JRoKGi"><i class="bi bi-facebook fs-4"></i></a></p>
+          <p><a href="https://www.threads.net/@viperadiexcellent"><img src="{% static 'images/images.png' %}" style="width: 25px"></a></p>
+          <p><a href="https://x.com/ViperExcellent?t=KEEe1QFREKjARjEhJiatvg&s=09"><i class="bi bi-twitter fs-4"></i></a></p>
+        </div>
+      </div>
+
+    </div>
+    <div class="row mt-2" style="text-align: center">
+      <p style="color: greenyellow">&copy; 2023 <span style="font-weight: bolder;font-size: 15px">VENTORY</span>. All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
 </body>
 </html>

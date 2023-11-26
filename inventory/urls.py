@@ -2,7 +2,7 @@ from django.urls import path
 
 import inventory.views
 from .views import add_product, product_detail, all_products, search_product_by_barcode, delete_product, edit_product, \
-  search_and_add_to_cart, cart_view, handlelogin, handlelogout, signup, checkout_view, add_to_cart,home
+  search_and_add_to_cart, cart_view, handlelogin, handlelogout, signup, checkout_view, add_to_cart,home,help,privacy
 
 urlpatterns = [
   path('add/', add_product, name='add_product'),
@@ -19,6 +19,6 @@ urlpatterns = [
   path('checkout/', checkout_view, name='checkout'),
   path('add_to_cart/<str:barcode>/', add_to_cart, name='add_to_cart'),
   path('',home, name='home'),
-
-
+  path('help/', help,name='help'),
+  path('privacy/', privacy,name='privacy'),
 ]

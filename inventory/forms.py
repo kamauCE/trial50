@@ -36,7 +36,7 @@ class ProductForm(forms.ModelForm):
 
 class BarcodeSearchForm(forms.Form):
   barcode = forms.CharField(max_length=14)
-  quantity = forms.IntegerField(label='Quantity', min_value=1)
+  # quantity = forms.IntegerField(label='Quantity', min_value=1)
 
 
 
