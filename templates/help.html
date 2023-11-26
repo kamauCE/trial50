@@ -1,18 +1,15 @@
 {% load static %}
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="icon" href="{% static 'images/INVENT.LOGO.jpg' %}">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Cart View</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="icon" href="{% static 'images/INVENT.LOGO.jpg' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventory</title>
 </head>
 <body>
-
 <nav class="navbar bg-success">
   <form class="container-fluid justify-content-start gap-4">
   <a class="navbar-brand" href="#" style="font-size: 40px;color: darksalmon">
@@ -27,17 +24,39 @@
   </form>
 </nav>
 
-<!-- cart_view.html -->
-<h2>Your Cart</h2>
-<ul>
-    {% for cart_item in cart_items %}
-        <li>{{ cart_item.product.name }} - Quantity: {{ cart_item.quantity }}</li>
-    {% endfor %}
-</ul>
-
-<a href="{% url 'all_products' %}" class="btn btn-primary btn-sm" role="button">Continue Shopping</a>
-<a href="{% url 'checkout' %}" class="btn btn-success btn-sm" role="button">Proceed to Checkout</a>
-
+<div>
+  <p>Welcome to <a href="{% url 'all_products' %}" style="text-decoration: none"><i>VENTORY</i></a>, your go-to solution for seamless inventory management! Whether you're a small business owner, warehouse manager, or just someone passionate about organizing,
+    <a href="{% url 'all_products' %}" style="text-decoration: none"><i>VENTORY</i></a> is here to make your stock-taking process a breeze. In this guide, we'll walk you through the essential steps to get started with <a href="{% url 'all_products' %}" style="text-decoration: none"><i>VENTORY</i></a>, from creating an account to mastering key features.</p>
+</div>
+<div>
+  <h3>Creating Your VENTORY Account:</h3>
+  <ol>
+    <li>Navigate to the Signup Page: <br>Open your web browser and enter the VENTORY website address. Look for the <a
+      href="{% url 'signup' %}"><button class="btn btn-outline-primary">Sign up</button></a> button  </li>
+    <li>Fill in the Registration Form: <br>Click <a
+      href="{% url 'signup' %}">here</a>, and you'll be directed to the registration page. Here, you'll need to provide some essential information, such as your desired username and a secure password. Make sure to choose a unique username that hasn't been taken by another user.</li>
+  </ol>
+  <br>
+  <h3>Logging In to Your VENTORY Account:</h3>
+  <ol>
+    <li>Visit the Login Page: <br>After confirming your account, head to the VENTORY website and click on the <a
+      href="{% url 'handlelogin' %}">Login</a> button.</li>
+    <li>Enter Your Credentials: <br>On the login page, enter your username and password.</li>
+    <li>Navigate Through the Dashboard: <br>Congratulations! You've successfully logged in. Explore the user-friendly dashboard to get acquainted with VENTORY's features. The dashboard typically provides quick access to essential functions like adding products, searching for items, and managing your cart.</li>
+  </ol>
+  <br>
+  <h3>Using VENTORY's Key Features:</h3>
+  <ol>
+    <li>Adding a Product: <br>Click on the "Add Product" link or button.
+Fill in the required details for your product, that is name, barcode, quantity.
+Save the information, and your product will be added to the inventory.</li>
+    <li>Searching for Products: <br>Use the "Search" functionality to find specific products by name or barcode.
+The search results will display relevant information about matching products.</li>
+    <li>Managing Your Cart: <br>Explore the "Your Cart" section to review and manage items you've added.
+Adjust quantities or remove items as needed.</li>
+    <li>Logging Out: <br>Always remember to log out when you're done using VENTORY, especially if you're on a shared computer.</li>
+  </ol>
+</div>
 
 <footer class="bg-dark">
   <div class="container">
@@ -74,5 +93,7 @@
     </div>
   </div>
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

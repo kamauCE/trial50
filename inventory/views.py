@@ -231,3 +231,9 @@ def add_to_cart(request, barcode):
 
 def home(request):
   return render(request,'home.html')
+
+def help(request):
+  return render(request,'help.html')
+
+def privacy(request):
+  return render(request,'privacy.html')
